@@ -1,0 +1,31 @@
+{
+  "name": "nbooks",
+  "version": "1.0.0",
+  "description": "Projeto de testes funcionais da API nBooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/specs/*.js",
+    "get": "mocha test/specs/*.js --grep @getbooks",
+    "getbooks": "mocha test/specs/*.js --grep @getbooks",
+    "ci": "mocha test/specs/*.js test --reporter mocha-multi-reporters --reporter-options configFile=mocha.json"
+  },
+  "keywords": [
+    "api",
+    "supertest",
+    "qaninja",
+    "treinamento"
+  ],
+  "author": "Fernando Papito",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^4.1.1",
+    "lodash": "^4.17.4",
+    "mocha": "^3.5.0",
+    "mocha-junit-reporter": "^1.13.0",
+    "mocha-multi-reporters": "^1.1.5",
+    "mongodb": "^2.2.31",
+    "supertest": "^3.0.0"
+  }
+}

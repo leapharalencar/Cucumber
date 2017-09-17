@@ -1,0 +1,12 @@
+
+
+# MacOs
+.DS_Store
+
+# Reports
+junit_results.xml
+report.html
+
+# node
+node_modules
+package-lock.json

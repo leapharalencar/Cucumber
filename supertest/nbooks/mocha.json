@@ -1,0 +1,6 @@
+{
+    "reporterEnabled": "nyan, mocha-junit-reporter",
+    "mochaJunitReporterReporterOptions": {
+        "mochaFile": "junit_results.xml"
+    }
+}

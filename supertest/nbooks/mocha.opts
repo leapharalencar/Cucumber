@@ -1,0 +1,4 @@
+--require test/helpers
+--reporter nyan
+--compilers js:babel-register
+--timeout 30000

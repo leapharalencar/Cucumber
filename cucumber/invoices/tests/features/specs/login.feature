@@ -8,6 +8,7 @@ Funcionalidade: Login
 Contexto: Página login
     * usuário acessa a página login
 
+    @logout
     Cenario: Administrador faz login
 
         Dado que eu tenho os seguintes dados de acesso:
@@ -15,14 +16,15 @@ Contexto: Página login
             | password | secret                 |
         Quando faço login
         Então vejo o dashboard com a mansagem "Olá, Admin QA, seja bem vindo ao Invoices."
+            E vejo email do usuário logado 
 
     @login_tentativa
     Cenário: Tentativa de login
 
         Dado que eu tenho uma lista de usuários:   
-            | email                     | password | menssagem                 |
+            | email                     | password | mensagem                 |
             | admin-qa@ninvoices.com    | 1234     | Senha inválida.          |
-            | admin-qa@teste.com        | secret   | Informe um email válido. |
+            | admin-qa&teste.com        | secret   | Informe um email válido. |
             | padrekevedo@noekziste.com | teste123 | Usuário não cadastrado.  |
         Quando faço a tentativa de login
         Então vejo as mensagens de erro de login

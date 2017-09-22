@@ -2,7 +2,10 @@
 
 
 Dado(/^usuário acessa a página login$/) do
-  visit '/login'
+  @login = LoginPage.new
+  @dash = DashPage.new
+  @nav = NavPage.new
+  @login.load 
 end
 
 Dado(/^que eu tenho os seguintes dados de acesso:$/) do |table|
@@ -14,23 +17,21 @@ Quando(/^faço login$/) do
   @Login = LoginPage.new
 
   @Login.email.set @user ['email'] 
-  find('input[type=password]').set @user['password']
-  find('button[id*=btnLogin]').click
+  @login.password.set @user['password']
+  @login.sign_in.click
 end
 
 
 Então(/^vejo o dashboard com a mansagem "([^"]*)"$/) do |welcome|
-  title = find('#content h3').text
-  expect(title).to eql 'Dashboard'
 
-  title_row = find('#title_row').text
-  expect(title_row).to have_content welcome
+  expect(@dash.title.text).to eql 'Dashboard'  
+  expect(@dash.title_row.text).to have_content welcome
   
 end
 
-Então(/^vejo email do usuário logado$/) do                                    
-  usermenu = ('#usermenu').text
-  expect(usermenu).to eql @user['email']
+Então(/^vejo email do usuário logado$/) do     
+  
+  expect(@nav.usermanu.text).to eql @user['email']
 end                                                                           
 
 Dado(/^que eu tenho uma lista de usuários:$/) do |table|
@@ -41,15 +42,13 @@ Quando(/^faço a tentativa de login$/) do
   @message_list = Array.new
   @message_spec = Array.new
 
-  @Login = LoginPage.new
-
   @users.each do |user|
-    @Login.email.set user['email']
-    find('input[type=password]').set user ['password']
-    find('button[id*=btnLogin]').click  
+    @Login.email.set user ['email'] 
+    @login.password.set user['password']
+    @login.sign_in.click
     
     @message_spec.push(user['mensagem'])
-    @message_list.push(find('#login-errors').text)
+    @message_list.push(@login.message_error.text)
   end  
 end
 Então(/^vejo as mensagens de erro de login$/) do

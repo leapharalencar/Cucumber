@@ -3,6 +3,9 @@ require 'capybara/cucumber'
 require 'rspec'
 require 'selenium-webdriver'
 require 'site_prism'
+require 'faker'
+
+Faker::Config.locale = 'pt-BR'
 
 Capybara.configure do |config|
     config.default_driver = :selenium

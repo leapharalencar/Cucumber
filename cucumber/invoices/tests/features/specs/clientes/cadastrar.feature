@@ -11,6 +11,19 @@ Funcionalidade: Cadastrar cliente
     @cadastro @login_admin
     Cenario: Cadastrar novo cliente
 
-        Dado que eu tenho um cliente "Prime"
+        Dado que eu tenho um novo cliente
         Quando faço o cadastro desse cliente
         Então esse cliente deve ser exibido na busca
+
+    @cadastro_tipo @login_admin
+    Esquema do Cenario: Cadastrar Clientes por tipo
+
+        Dado que eu tenho um novo cliente do <tipo>
+        Quando faço o cadastro desse cliente
+        Então esse cliente deve ser exibido na busca
+
+        Exemplos:
+        |tipo       |
+        |"Prime"    |
+        |"Gold"     |
+        |"Platinum" |

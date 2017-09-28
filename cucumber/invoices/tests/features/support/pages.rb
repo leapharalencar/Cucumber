@@ -49,6 +49,12 @@ class CustomerPage < SitePrism::Page
 
     elements :view, 'table tbody tr'
 
-    
+    def select_gender (gender)
+        self.radio_m.click if @new_customer['gender'] == 'M'
+        self.radio_m.click if @new_customer['gender'] == 'F'
+    end
 
+    def select_type(target)
+        self.type.find('option', text: target).select_option
+    end
 end

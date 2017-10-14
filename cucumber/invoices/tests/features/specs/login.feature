@@ -8,14 +8,12 @@ Funcionalidade: Login
 Contexto: Página login
     * usuário acessa a página login
 
-    @logout
+    @logout @now
     Cenario: Administrador faz login
 
-        Dado que eu tenho os seguintes dados de acesso:
-            | email    | admin-qa@ninvoices.com |
-            | password | secret                 |
+        Dado que eu tenho um usuário com o perfil "admin"        
         Quando faço login
-        Então vejo o dashboard com a mansagem "Olá, Admin QA, seja bem vindo ao Invoices."
+        Então vejo o dashboard com a mansagem "Olá, " usuário ", seja bem vindo ao Invoices."
             E vejo email do usuário logado 
 
     @login_tentativa

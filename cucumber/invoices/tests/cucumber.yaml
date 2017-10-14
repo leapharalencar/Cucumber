@@ -1,0 +1,11 @@
+#YAML Template
+---
+default: --format progress -p json -p html -p firefox -p qa
+html: --format html --out=reports/report.html
+json: --format json --out=reports/report.json
+firefox: BROWSER=firefox
+chrome: BROWSER=chrome
+headless: BROWSER=headless
+qa: ENVIRONMENT=qa
+uat: ENVIRONMENT=uat
+production: ENVIRONMENT=production

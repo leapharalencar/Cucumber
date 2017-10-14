@@ -9,7 +9,7 @@ Funcionalidade: Exclusão de clientes
         * usuário "admin" faz login
         * acesso o cadastro de clientes
 
-    @smoke
+    @smoke @logout
     Cenário: Remover cliente
 
         Dado que eu tenho um cliente cadastrado

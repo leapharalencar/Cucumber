@@ -35,7 +35,8 @@ class CustomerPage < SitePrism::Page
     end
 
     def remove_item
-        self.view.first.find('#delete-button').click
+        #self.view.first.find('#delete-button').click
+        self.view.first.find('span[class*=trash]').click
     end
 
 end

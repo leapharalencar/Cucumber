@@ -1,0 +1,12 @@
+## dados do ambiente de QA
+---
+url: https://ninjainvoices-uat.herokuapp.com/
+users:
+  admin:
+    name: 'Admin UAT'
+    email: 'admin-uat@ninvoices.com'
+    password: 'secret'
+  analyst:
+    name: 'Analyst UAT'
+    email: 'analyst-uat@ninvoices.com'
+    password: 'test#123'

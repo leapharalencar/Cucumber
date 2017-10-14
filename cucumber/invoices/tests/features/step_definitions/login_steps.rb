@@ -5,20 +5,18 @@ Dado(/^usuário acessa a página login$/) do
   login.load 
 end
 
-Dado(/^que eu tenho os seguintes dados de acesso:$/) do |table|
-  @user = table.rows_hash
+
+Dado(/^que eu tenho um usuário com o perfil "([^"]*)"$/) do |perfil|
+  @user = $data['users'][perfil]
 end
 
 Quando(/^faço login$/) do
   login.do_login(@user)
 end
 
-
-Então(/^vejo o dashboard com a mansagem "([^"]*)"$/) do |welcome|
-
+Então(/^vejo o dashboard com a mansagem "([^"]*)" usuário "([^"]*)"$/) do |msg1, msg2|
   expect(dash.title.text).to eql 'Dashboard'  
-  expect(dash.title_row.text).to have_content welcome
-  
+  expect(dash.title_row.text).to have_content "#{msg1} #{@user['name']}#{msg2}"  
 end
 
 Então(/^vejo email do usuário logado$/) do     

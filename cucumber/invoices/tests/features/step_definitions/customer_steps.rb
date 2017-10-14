@@ -2,13 +2,10 @@
 
 #backgraund
 
-Dado(/^usuário "([^"]*)" faz login$/) do |_profile|
-    login.load
-    
-   user = {
-       'email' => 'admin-qa@ninvoices.com', 
-       'password' => 'secret'
-       }    
+Dado(/^usuário "([^"]*)" faz login$/) do |perfil|
+    login.load   
+  
+   user = $data['users'][perfil]
    login.do_login(user)
    dash.wait_for_title
 end
@@ -19,7 +16,7 @@ end
 
 Dado(/^que eu tenho um novo cliente$/) do 
     name = "#{Faker::Name.first_name} #{Faker::Name.last_name}"                         
-    new_customer = {
+    @new_customer = {
         'name' => name,
         'phone' => Faker::PhoneNumber.cell_phone,
         'email' => Faker::Internet.free_email(name),
@@ -31,7 +28,7 @@ Dado(/^que eu tenho um novo cliente$/) do
 end   
 
 Dado(/^esse cliente é do "([^"]*)"$/) do |tipo|
-    new_customer ['type'] = tipo 
+    new_customer ['type'] => tipo 
 end
                                                                           
 Quando(/^faço o cadastro desse cliente$/) do

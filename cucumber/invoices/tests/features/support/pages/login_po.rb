@@ -6,7 +6,7 @@ class LoginPage < SitePrism::Page
 
     section :nav, Sections::NavBar, '#navbar'
 
-    element :email, '#email'
+    element :email, '#email' 
     element :password, 'input[type=password]'
     element :sign_in, 'button[id*=btnLogin]'
     element :message_error, '#login-errors'
